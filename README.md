@@ -1,2 +1,16 @@
-# AWS_CodeBuild_TestRepo
-AWS Code Build를 위한 Repo
+# BootDocker
+
+## SpringBoot - Docker
+- Dockerfile 생성
+- gradle 빌드
+- Docker imgae build
+```
+// image build
+docker build -t bootdocker:v1 .
+// container run
+docker run -d --name bootdocker -p 8888:8080 bootdocker:v1
+// run check
+docker ps
+// call
+curl http://localhost:8888/jaemin
+```
