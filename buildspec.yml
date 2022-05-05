@@ -13,7 +13,7 @@ phases:
       - echo Current Build number is v${CODEBUILD_BUILD_NUMBER}
       - echo Loggin in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com
       
   build:
     commands:
@@ -27,7 +27,7 @@ phases:
     commands:
       - echo Build completed on date
       - echo Pushing the Docker image...
-      - docker push $REPOSITORY_URI/testBootApp:v${CODEBUILD_BUILD_NUMBER}
+      - docker push 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER}
       - echo Writing image definitions file...
       - printf '[{"name":"testBootApp","imageUri":"%s"}]' 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER} > imagedefinitions.json
       - echo cat imagedefinitions.json
