@@ -7,8 +7,8 @@ phases:
       
   pre_build:
     commands:
-      - REGION=us-east-1
-      - REPOSITORY_URI=844148244640.dkr.ecr.us-east-1.amazonaws.com/foodtruck
+      - REGION=ap-northeast-2
+      - REPOSITORY_URI=844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck
       - IMAGE_NAME=testBootApp
       - echo Current Build number is v${CODEBUILD_BUILD_NUMBER}
       - echo Loggin in to Amazon ECR...
