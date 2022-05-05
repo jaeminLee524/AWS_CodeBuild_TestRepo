@@ -13,7 +13,7 @@ phases:
       - echo Current Build number is v${CODEBUILD_BUILD_NUMBER}
       - echo Loggin in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $REPOSITORY_URI
+      - aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck
       
   build:
     commands:
