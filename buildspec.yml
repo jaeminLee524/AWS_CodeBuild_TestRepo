@@ -7,9 +7,6 @@ phases:
       
   pre_build:
     commands:
-      - REGION=ap-northeast-2
-      - REPOSITORY_URI=844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck
-      - IMAGE_NAME=testBootApp
       - echo Current Build number is v${CODEBUILD_BUILD_NUMBER}
       - echo Loggin in to Amazon ECR...
       - aws --version
@@ -20,16 +17,17 @@ phases:
       - echo Build started on date
       - echo Building the Docker image...
       - chmod +x gradlew
-      - ./gradlew bootBuildImage --imageName=testBootApp
-      - docker tag testBootApp:latest 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER}
+      - pwd
+      - ./gradlew bootBuildImage --imageName=foodtruck
+      - docker tag foodtruck:latest 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck:v${CODEBUILD_BUILD_NUMBER}
       
   post_build:
     commands:
       - echo Build completed on date
       - echo Pushing the Docker image...
-      - docker push 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER}
+      - docker push 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck:v${CODEBUILD_BUILD_NUMBER}
       - echo Writing image definitions file...
-      - printf '[{"name":"testBootApp","imageUri":"%s"}]' 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER} > imagedefinitions.json
+      - printf '[{"name":"foodtruck","imageUri":"%s"}]' 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck:v${CODEBUILD_BUILD_NUMBER} > imagedefinitions.json
       - echo cat imagedefinitions.json
       - cat imagedefinitions.json
 
