@@ -13,7 +13,7 @@ phases:
       - echo Current Build number is v${CODEBUILD_BUILD_NUMBER}
       - echo Loggin in to Amazon ECR...
       - aws --version
-      - aws ecr get-login-password --region $REGION | docker login -u AWS --password-stdin $REPOSITORY_URI
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $REPOSITORY_URI
       
   build:
     commands:
