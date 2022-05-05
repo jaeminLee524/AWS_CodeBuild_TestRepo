@@ -21,7 +21,7 @@ phases:
       - echo Building the Docker image...
       - chmod +x gradlew
       - ./gradlew bootBuildImage --imageName=testBootApp
-      - docker tag testBootApp:latest $REPOSITORY_URI/testBootApp:v${CODEBUILD_BUILD_NUMBER}
+      - docker tag testBootApp:latest 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER}
       
   post_build:
     commands:
@@ -29,7 +29,7 @@ phases:
       - echo Pushing the Docker image...
       - docker push $REPOSITORY_URI/testBootApp:v${CODEBUILD_BUILD_NUMBER}
       - echo Writing image definitions file...
-      - printf '[{"name":"testBootApp","imageUri":"%s"}]' $REPOSITORY_URI/testBootApp:v${CODEBUILD_BUILD_NUMBER} > imagedefinitions.json
+      - printf '[{"name":"testBootApp","imageUri":"%s"}]' 844148244640.dkr.ecr.ap-northeast-2.amazonaws.com/foodtruck/testBootApp:v${CODEBUILD_BUILD_NUMBER} > imagedefinitions.json
       - echo cat imagedefinitions.json
       - cat imagedefinitions.json
 
